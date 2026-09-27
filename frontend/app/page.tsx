@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 
-const API_BASE = 'http://localhost:8000';
+import { API_BASE } from './config';
 
 interface ForecastResult {
   store: number;

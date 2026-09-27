@@ -15,15 +15,18 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+from pathlib import Path
+BASE_DIR = Path(__file__).resolve().parent
+
 # Load trained models ONCE at startup — never retrain live
-with open('forecast_model.pkl', 'rb') as f:
+with open(BASE_DIR / 'forecast_model.pkl', 'rb') as f:
     forecast_model = pickle.load(f)
 
-with open('elasticity_model.pkl', 'rb') as f:
+with open(BASE_DIR / 'elasticity_model.pkl', 'rb') as f:
     elasticity_params = pickle.load(f)
 
 # Load cleaned data so we can look up recent history per store (needed for lag features)
-df = pd.read_csv('data/train_with_price.csv', parse_dates=['Date'])
+df = pd.read_csv(BASE_DIR / 'data/train_with_price.csv', parse_dates=['Date'])
 
 
 class ForecastRequest(BaseModel):

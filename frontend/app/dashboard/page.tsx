@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { TrendingUp, Store, DollarSign, BarChart2 } from 'lucide-react';
 
-const API_BASE = 'http://localhost:8000';
+import { API_BASE } from '../config';
 
 interface StoreResult {
   store: number;
